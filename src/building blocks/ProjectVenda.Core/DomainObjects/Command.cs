@@ -1,5 +1,6 @@
 ﻿using FluentValidation.Results;
 using MediatR;
+using System;
 
 namespace ProjectVenda.Core.DomainObjects
 {

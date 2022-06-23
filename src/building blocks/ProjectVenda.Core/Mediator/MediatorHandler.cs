@@ -1,10 +1,6 @@
 ﻿using FluentValidation.Results;
 using MediatR;
 using ProjectVenda.Core.DomainObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjectVenda.Core.Mediator
