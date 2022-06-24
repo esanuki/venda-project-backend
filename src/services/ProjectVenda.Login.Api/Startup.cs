@@ -26,6 +26,7 @@ namespace ProjectVenda.Login.Api
             services.AddIdentityConfiguration(Configuration);
             services.AddSwaggerConfiguration();
             services.AddMediatR(typeof(Startup));
+            services.AddDependencyInjection();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
