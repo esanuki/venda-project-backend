@@ -4,7 +4,7 @@ using System;
 
 namespace ProjectVenda.Core.DomainObjects
 {
-    public abstract class Command : Message, IRequest<ValidationResult>
+    public abstract class Command : Message, IRequest<bool>
     {
         public DateTime Timestamp { get; set; }
         public ValidationResult ValidationResult { get; set; }

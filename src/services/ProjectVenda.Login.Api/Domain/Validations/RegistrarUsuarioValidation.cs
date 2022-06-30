@@ -17,10 +17,5 @@ namespace ProjectVenda.Login.Api.Domain.Validations
                 .MinimumLength(3).WithMessage("A senha deve ter pelo menos 3 caracteres")
                 .MaximumLength(15).WithMessage("A senha deve ter no máximo 15 caracteres");
         }
-
-        protected static bool EmailValido(string email)
-        {
-            return Email.ValidarEmail(email);
-        }
     }
 }

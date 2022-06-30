@@ -19,7 +19,7 @@ namespace ProjectVenda.Core.Mediator
             await _mediator.Publish(obj);
         }
 
-        public async Task<ValidationResult> SendCommand<T>(T command) where T : Command
+        public async Task<bool> SendCommand<T>(T command) where T : Command
         {
             return await _mediator.Send(command);
         }
