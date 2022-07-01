@@ -34,7 +34,7 @@ namespace ProjectVenda.Login.Api.Application.ComandHandler
                 EmailConfirmed = true
             };
 
-            var result = await _loginService.Register(user, request.Senha);
+            var result = await _loginService.Register(user, request.Password);
 
             if (!result.Succeeded)
                 result.Errors.ToList().ForEach(x => AddErrors(x.Description));

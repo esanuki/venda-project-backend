@@ -8,6 +8,6 @@ namespace ProjectVenda.Login.Api.Domain.Interfaces
     public interface ILoginService
     {
         Task<IdentityResult> Register(IdentityUser user, string senha);
-        Task<LoginResponseDto> Login(LoginViewModel login);
+        Task<SignInResult> Login(LoginViewModel login);
     }
 }

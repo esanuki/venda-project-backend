@@ -1,22 +1,16 @@
 ﻿using FluentValidation.Results;
+using ProjectVenda.Core.Base;
 using ProjectVenda.Core.Notificator;
 
 namespace ProjectVenda.Core.DomainObjects
 {
-    public class CommandHandler
+    public class CommandHandler : Main
     {
         protected ValidationResult ValidationResult;
-        protected INotificator _notificator;
 
-        public CommandHandler(INotificator notificator)
+        public CommandHandler(INotificator notificator) : base(notificator)
         {
             ValidationResult = new ValidationResult();
-            _notificator = notificator;
-        }
-
-        protected void AddErrors(string message)
-        {
-            _notificator.Handle(new Notification(message));
         }
 
     }

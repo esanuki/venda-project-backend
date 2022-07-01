@@ -21,7 +21,7 @@ namespace ProjectVenda.Login.Api.Controllers
         }
 
         [HttpPost("registrar")]
-        public async Task<ActionResult> Registrar(LoginViewModel usuarioRegistro)
+        public async Task<ActionResult> Register(LoginViewModel usuarioRegistro)
         {
             var usuarioCommand = new RegistrarUsuarioCommand(usuarioRegistro.Email, usuarioRegistro.Senha);
 
@@ -30,7 +30,8 @@ namespace ProjectVenda.Login.Api.Controllers
             return CustomResponse(await _mediator.SendCommand(usuarioCommand));
         }
 
-        public async Task<ActionResult> Login(LoginViewModel usuarioLogin)
+        [HttpPost("autenticar")]
+        public async Task<ActionResult> Authenticate(LoginViewModel usuarioLogin)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 

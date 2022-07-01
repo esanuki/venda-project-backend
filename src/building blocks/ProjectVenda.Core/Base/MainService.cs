@@ -1,19 +1,13 @@
 ﻿using ProjectVenda.Core.Notificator;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectVenda.Core.Base
 {
-    public class MainService
+    public class MainService : Main
     {
-        protected INotificator _notificator;
 
-        public MainService(INotificator notificator)
+        public MainService(INotificator notificator) : base(notificator)
         {
-            _notificator = notificator;
         }
+
     }
 }

@@ -1,15 +1,13 @@
 ﻿using FluentValidation.Results;
+using ProjectVenda.Core.Base;
 using ProjectVenda.Core.Notificator;
 
 namespace ProjectVenda.Core.DomainObjects
 {
-    public class Queries
+    public class Queries : Main
     {
-        protected INotificator _notificator;
-
-        public Queries(INotificator notificator)
+        public Queries(INotificator notificator) : base(notificator)
         {
-            _notificator = notificator;
-        }
+        }       
     }
 }

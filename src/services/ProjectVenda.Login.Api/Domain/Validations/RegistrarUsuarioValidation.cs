@@ -12,7 +12,7 @@ namespace ProjectVenda.Login.Api.Domain.Validations
                 .NotEmpty().WithMessage("O e-mail não foi informado")
                 .Must(Email.ValidarEmail).WithMessage("O e-mail informado não é valido");
 
-            RuleFor(ru => ru.Senha)
+            RuleFor(ru => ru.Password)
                 .NotEmpty().WithMessage("A senha não foi informada.")
                 .MinimumLength(3).WithMessage("A senha deve ter pelo menos 3 caracteres")
                 .MaximumLength(15).WithMessage("A senha deve ter no máximo 15 caracteres");

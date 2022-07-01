@@ -6,14 +6,14 @@ namespace ProjectVenda.Login.Api.Application.Comand
 {
     public class RegistrarUsuarioCommand : Command
     {
-        public RegistrarUsuarioCommand(string email, string senha)
+        public RegistrarUsuarioCommand(string email, string password)
         {
             Email = email;
-            Senha = senha;
+            Password = password;
         }
 
         public string Email { get; set; }
-        public string Senha { get; set; }
+        public string Password { get; set; }
 
         public override bool IsValid()
         {
