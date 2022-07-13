@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ProjectVenda.Login.Api.Domain.Models;
 
 namespace ProjectVenda.Login.Api.Repository.Context
 {
@@ -9,5 +10,7 @@ namespace ProjectVenda.Login.Api.Repository.Context
         {
 
         }
+
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }

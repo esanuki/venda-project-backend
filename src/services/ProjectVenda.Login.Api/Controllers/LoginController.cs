@@ -3,6 +3,7 @@ using ProjectVenda.Core.Controllers;
 using ProjectVenda.Core.Mediator;
 using ProjectVenda.Core.Notificator;
 using ProjectVenda.Login.Api.Application.Comand;
+using ProjectVenda.Login.Api.Application.Queries.Interfaces;
 using ProjectVenda.Login.Api.Interop.ViewModels;
 using System.Threading.Tasks;
 
@@ -12,12 +13,15 @@ namespace ProjectVenda.Login.Api.Controllers
     public class LoginController : MainController
     {
         private readonly IMediatorHandler _mediator;
+        private readonly ILoginQueries _loginQueries;
 
         public LoginController(
-            INotificator notificator, 
-            IMediatorHandler mediator) : base(notificator)
+            INotificator notificator,
+            IMediatorHandler mediator,
+            ILoginQueries loginQueries) : base(notificator)
         {
             _mediator = mediator;
+            _loginQueries = loginQueries;
         }
 
         [HttpPost("registrar")]
@@ -35,7 +39,21 @@ namespace ProjectVenda.Login.Api.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            return null;
+            var result = await _loginQueries.Login(usuarioLogin);
+
+            if (_notificator.ExistsNotification()) return CustomResponse();
+
+            return CustomResponse(result);
+        }
+
+        [HttpPost("refreshToken")]
+        public async Task<ActionResult> RefreshToken([FromBody] string refreshToken)
+        {
+            var token = await _loginQueries.RefreshToken(refreshToken);
+
+            if (_notificator.ExistsNotification()) return CustomResponse();
+
+            return CustomResponse(token);
         }
     }
 }

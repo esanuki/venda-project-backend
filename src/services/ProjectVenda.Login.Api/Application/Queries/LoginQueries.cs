@@ -6,6 +6,7 @@ using ProjectVenda.Login.Api.Application.Queries.Interfaces;
 using ProjectVenda.Login.Api.Domain.Interfaces;
 using ProjectVenda.Login.Api.Interop.Dto;
 using ProjectVenda.Login.Api.Interop.ViewModels;
+using System;
 using System.Threading.Tasks;
 
 namespace ProjectVenda.Login.Api.Application.Queries
@@ -27,7 +28,7 @@ namespace ProjectVenda.Login.Api.Application.Queries
 
             if (result.Succeeded)
             {
-                return null;
+                return await _loginService.GenerateToken(loginViewModel.Email);
             }
 
             if (result.IsLockedOut)
@@ -38,6 +39,25 @@ namespace ProjectVenda.Login.Api.Application.Queries
 
             AddErrors("Usuário ou Senha inválidas");
             return null;
+        }
+
+        public async Task<LoginResponseDto> RefreshToken(string refreshToken)
+        {
+            if (string.IsNullOrEmpty(refreshToken))
+            {
+                _notificator.Handle(new Core.DomainObjects.Notification("Refresh Token Inválido"));
+                return null;
+            }
+
+            var token = await _loginService.GetRefreshToken(Guid.Parse(refreshToken));
+
+            if (token is null)
+            {
+                _notificator.Handle(new Core.DomainObjects.Notification("Refresh Token expirado"));
+                return null;
+            }
+
+            return await _loginService.GenerateToken(token.Email);
         }
     }
 }
