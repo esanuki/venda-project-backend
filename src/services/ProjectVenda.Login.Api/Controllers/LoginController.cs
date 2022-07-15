@@ -5,6 +5,7 @@ using ProjectVenda.Core.Notificator;
 using ProjectVenda.Login.Api.Application.Comand;
 using ProjectVenda.Login.Api.Application.Queries.Interfaces;
 using ProjectVenda.Login.Api.Interop.ViewModels;
+using System;
 using System.Threading.Tasks;
 
 namespace ProjectVenda.Login.Api.Controllers

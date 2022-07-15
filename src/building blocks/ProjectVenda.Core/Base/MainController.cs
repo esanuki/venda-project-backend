@@ -22,12 +22,17 @@ namespace ProjectVenda.Core.Controllers
 
         protected ActionResult CustomResponse(object result = null)
         {
-            if (Validate()) return Ok(result);
-
-            return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]>
+            if (Validate()) return Ok(new
             {
-                { "errors", _notificator.GetNotifications().Select(x => x.Message).ToArray()}
-            }));
+                success = true,
+                data = result
+            });
+
+            return BadRequest(new
+            {
+                success = false,
+                errors = _notificator.GetNotifications().Select(e => e.Message)
+            });
         }
 
         protected ActionResult CustomResponse(ModelStateDictionary modelState)
