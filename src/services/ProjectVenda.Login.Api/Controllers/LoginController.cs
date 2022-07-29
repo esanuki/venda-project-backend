@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ProjectVenda.Login.Api.Controllers
 {
-    [Route("api/login")]
+    [Route("api/[controller]")]
     public class LoginController : MainController
     {
         private readonly IMediatorHandler _mediator;

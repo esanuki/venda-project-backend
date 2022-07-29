@@ -92,11 +92,11 @@ namespace ProjectVenda.Login.Api.Services
         private string GetToken(ClaimsIdentity identityClaims)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var currentIssuer = $"{_user.GetHttpContext().Request.Scheme}://{_user.GetHttpContext().Request.Host}";
             var key = Encoding.ASCII.GetBytes(TokenSettings.ChaveSecreta);
             var token = tokenHandler.CreateToken(new SecurityTokenDescriptor
             {
-                Issuer = currentIssuer,
+                Issuer = TokenSettings.Emissor,
+                Audience = TokenSettings.Audiencia,
                 Subject = identityClaims,
                 Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
