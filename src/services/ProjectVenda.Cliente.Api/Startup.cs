@@ -22,7 +22,7 @@ namespace ProjectVenda.Cliente.Api
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddApiConfiguration();
+            services.AddApiConfiguration(Configuration);
             services.AddJwtConfiguration(Configuration);
             services.AddSwaggerConfiguration();
             services.AddMediatR(typeof(Startup));

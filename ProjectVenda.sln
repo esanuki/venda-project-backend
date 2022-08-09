@@ -17,7 +17,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectVenda.Login.Api", "s
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cliente", "Cliente", "{FBF962DF-8CF2-438A-9935-BCCE42318990}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectVenda.Cliente.Api", "src\services\ProjectVenda.Cliente.Api\ProjectVenda.Cliente.Api.csproj", "{2A0D7BA4-A150-4AAE-8117-F8846CB33C91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectVenda.Cliente.Api", "src\services\ProjectVenda.Cliente.Api\ProjectVenda.Cliente.Api.csproj", "{2A0D7BA4-A150-4AAE-8117-F8846CB33C91}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{28DFD442-7CB7-40E0-A31C-045917A84ACD}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
