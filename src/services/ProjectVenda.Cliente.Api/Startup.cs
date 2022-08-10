@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ProjectVenda.Cliente.Api.IoC;
+using ProjectVenda.Cliente.Api.CrossCutting.IoC;
 using ProjectVenda.Core.IoC;
 
 namespace ProjectVenda.Cliente.Api

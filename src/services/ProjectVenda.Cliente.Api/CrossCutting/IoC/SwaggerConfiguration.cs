@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System;
 
-namespace ProjectVenda.Cliente.Api.IoC
+namespace ProjectVenda.Cliente.Api.CrossCutting.IoC
 {
     public static class SwaggerConfiguration
     {

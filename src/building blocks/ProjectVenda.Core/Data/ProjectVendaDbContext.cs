@@ -9,5 +9,9 @@ namespace ProjectVenda.Core.Data
 {
     public abstract class ProjectVendaDbContext : DbContext
     {
+        public ProjectVendaDbContext()
+        {
+
+        }
     }
 }

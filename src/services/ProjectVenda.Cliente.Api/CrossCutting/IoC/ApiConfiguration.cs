@@ -4,18 +4,19 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ProjectVenda.Cliente.Api.Repository;
+using ProjectVenda.Cliente.Api.Persistance;
+using ProjectVenda.Core.Configuration;
 using ProjectVenda.Core.IoC;
 using System;
 
-namespace ProjectVenda.Cliente.Api.IoC
+namespace ProjectVenda.Cliente.Api.CrossCutting.IoC
 {
     public static class ApiConfiguration
     {
         public static void AddApiConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<ClienteDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("DbConnection")));
+            services.AddDbContext<ClienteDbContext>();
+            services.Configure<ConnectionStrings>(configuration.GetSection("ConnectionStrings"));
             
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
