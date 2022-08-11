@@ -12,10 +12,5 @@ namespace ProjectVenda.Cliente.Api.Application.Comand
         public string Telefone { get; set; }
         public DateTime? DataNascimento { get; set; }
 
-        public override bool IsValid()
-        {
-            ValidationResult = new InserirClienteCommandValidation().Validate(this);
-            return ValidationResult.IsValid;
-        }
     }
 }

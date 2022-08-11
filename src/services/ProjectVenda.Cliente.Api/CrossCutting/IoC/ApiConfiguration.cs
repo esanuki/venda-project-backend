@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using ProjectVenda.Cliente.Api.Persistance;
 using ProjectVenda.Core.Configuration;
 using ProjectVenda.Core.IoC;
+using ProjectVenda.Core.Middleware;
 using System;
 
 namespace ProjectVenda.Cliente.Api.CrossCutting.IoC
@@ -16,6 +17,7 @@ namespace ProjectVenda.Cliente.Api.CrossCutting.IoC
         public static void AddApiConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ClienteDbContext>();
+            services.AddHttpContextAccessor();
             services.Configure<ConnectionStrings>(configuration.GetSection("ConnectionStrings"));
             
             services.AddControllers();
@@ -40,6 +42,8 @@ namespace ProjectVenda.Cliente.Api.CrossCutting.IoC
             app.UseRouting();
 
             app.UseAuthenticationConfiguration();
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

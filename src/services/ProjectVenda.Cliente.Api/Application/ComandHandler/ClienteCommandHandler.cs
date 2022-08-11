@@ -2,8 +2,10 @@
 using MediatR;
 using ProjectVenda.Cliente.Api.Application.Comand;
 using ProjectVenda.Cliente.Api.Persistance.Repository.Cliente;
+using ProjectVenda.Core.Data;
 using ProjectVenda.Core.DomainObjects;
 using ProjectVenda.Core.Notificator;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,27 +14,38 @@ namespace ProjectVenda.Cliente.Api.Application.ComandHandler
     public class ClienteCommandHandler : CommandHandler,
         IRequestHandler<InserirClienteCommand, bool>
     {
-        private IClienteRepository _clienteRepository;
-        private IMapper _mapper;
+        private readonly IClienteRepository _clienteRepository;
+        private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
         public ClienteCommandHandler(
-            INotificator notificator, 
-            IClienteRepository clienteRepository, 
-            IMapper mapper) : base(notificator)
+            INotificator notificator,
+            IClienteRepository clienteRepository,
+            IMapper mapper,
+            IUnitOfWork unitOfWork) : base(notificator)
         {
             _clienteRepository = clienteRepository;
             _mapper = mapper;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<bool> Handle(InserirClienteCommand request, CancellationToken cancellationToken)
         {
-            if (!request.IsValid())
+            
+            var cliente = _mapper.Map<Domain.Model.Cliente>(request);
+
+            if (!cliente.IsValid())
             {
-                request.ValidationResult.Errors.ForEach(x => AddErrors(x.ErrorMessage));
+                cliente.ValidationResult.Errors.ForEach(x => AddErrors(x.ErrorMessage));
                 return false;
             }
 
-            return await Task.FromResult(true);
+            await _clienteRepository.Save(cliente);
+
+            await _unitOfWork.Commit();
+
+
+            return true;
         }
     }
 }

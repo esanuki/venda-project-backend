@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using ProjectVenda.Cliente.Api.Application.Comand;
+using ProjectVenda.Cliente.Api.Application.ComandHandler;
 using ProjectVenda.Cliente.Api.Persistance;
 using ProjectVenda.Cliente.Api.Persistance.Repository.Cliente;
 using ProjectVenda.Core.Data;
@@ -22,7 +25,7 @@ namespace ProjectVenda.Cliente.Api.CrossCutting.IoC
             services.AddScoped<INotificator, Notificator>();
 
             ////Commands
-            //services.AddScoped<IRequestHandler<RegistrarUsuarioCommand, bool>, LoginCommandHandler>();
+            services.AddScoped<IRequestHandler<InserirClienteCommand, bool>, ClienteCommandHandler>();
 
             ////Services
             //services.AddScoped<ILoginService, LoginService>();
@@ -35,6 +38,7 @@ namespace ProjectVenda.Cliente.Api.CrossCutting.IoC
 
             //Repository
             services.AddScoped<IClienteRepository, ClienteRepository>();
+
 
         }
     }
