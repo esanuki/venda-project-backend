@@ -10,5 +10,6 @@ namespace ProjectVenda.Cliente.Api.Domain.Interop.Dto
         public string Email { get; set; }
         public string Telefone { get; set; }
         public DateTime? DataNascimento { get; set; }
+        public EnderecoDto Endereco { get; set; }
     }
 }

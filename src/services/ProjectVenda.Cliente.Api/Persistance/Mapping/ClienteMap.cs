@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ProjectVenda.Cliente.Api.Persistance.Mapping
 {
@@ -26,6 +27,14 @@ namespace ProjectVenda.Cliente.Api.Persistance.Mapping
             builder.Property(p => p.DataNascimento)
                 .HasColumnName("DataNascimento")
                 .HasColumnType("datetime2");
+
+            builder.Property(p => p.EnderecoId)
+                .HasColumnName("EnderecoId")
+                .HasColumnType("uniqueidentifier");
+
+            builder.HasOne(c => c.Endereco)
+                .WithOne(e => e.Cliente)
+                .HasForeignKey<Domain.Model.Cliente>(c => c.EnderecoId);
         }
     }
 }

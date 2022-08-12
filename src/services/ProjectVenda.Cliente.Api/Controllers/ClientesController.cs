@@ -31,7 +31,7 @@ namespace ProjectVenda.Cliente.Api.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<IActionResult> Post([FromBody] ClienteCreateViewModel cliente)
         {
             var command = _mapper.Map<InserirClienteCommand>(cliente);

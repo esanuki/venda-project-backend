@@ -11,6 +11,8 @@ namespace ProjectVenda.Cliente.Api.Domain.Model
         public string Cidade { get; set; }
         public string Estado { get; set; }
 
+        public Cliente Cliente { get; set; }
+
         public override bool IsValid()
         {
             return new EnderecoValidation().Validate(this).IsValid;

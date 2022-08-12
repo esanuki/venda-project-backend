@@ -34,11 +34,7 @@ namespace ProjectVenda.Cliente.Api.Application.ComandHandler
             
             var cliente = _mapper.Map<Domain.Model.Cliente>(request);
 
-            if (!cliente.IsValid())
-            {
-                cliente.ValidationResult.Errors.ForEach(x => AddErrors(x.ErrorMessage));
-                return false;
-            }
+            if (!await IsValid(cliente)) return false;
 
             await _clienteRepository.Save(cliente);
 
@@ -46,6 +42,26 @@ namespace ProjectVenda.Cliente.Api.Application.ComandHandler
 
 
             return true;
+        }
+
+        private async Task<bool> IsValid(Domain.Model.Cliente cliente)
+        {
+            if (!cliente.IsValid())
+            {
+                cliente.ValidationResult.Errors.ForEach(x => AddErrors(x.ErrorMessage));
+                return false;
+            }
+
+            if (cliente.Endereco is not null)
+            {
+                if (!cliente.Endereco.IsValid())
+                {
+                    cliente.Endereco.ValidationResult.Errors.ForEach(x => AddErrors(x.ErrorMessage));
+                    return false;
+                }
+            }
+
+            return await Task.FromResult(true);
         }
     }
 }

@@ -12,6 +12,9 @@ namespace ProjectVenda.Cliente.Api.Domain.Model
         public string Telefone { get; set; }
         public DateTime DataNascimento { get; set; }
 
+        public Guid? EnderecoId { get; set; }
+        public Endereco Endereco { get; set; }
+
         public override bool IsValid()
         {
             return new ClienteValidation().Validate(this).IsValid;
