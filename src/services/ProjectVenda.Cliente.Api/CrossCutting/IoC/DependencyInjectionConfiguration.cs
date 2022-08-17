@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using ProjectVenda.Cliente.Api.Application.Comand;
 using ProjectVenda.Cliente.Api.Application.ComandHandler;
+using ProjectVenda.Cliente.Api.Application.Queries;
+using ProjectVenda.Cliente.Api.Application.Queries.Interfaces;
 using ProjectVenda.Cliente.Api.Persistance;
 using ProjectVenda.Cliente.Api.Persistance.Repository.Cliente;
 using ProjectVenda.Core.Data;
@@ -31,7 +33,7 @@ namespace ProjectVenda.Cliente.Api.CrossCutting.IoC
             //services.AddScoped<ILoginService, LoginService>();
 
             ////Queries
-            //services.AddScoped<ILoginQueries, LoginQueries>();
+            services.AddScoped<IClienteQueries, ClienteQueries>();
 
             ////User
             services.AddScoped<IUser, User>();

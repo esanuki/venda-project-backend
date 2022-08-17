@@ -4,9 +4,11 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjectVenda.Cliente.Api.Application.Comand;
+using ProjectVenda.Cliente.Api.Application.Queries.Interfaces;
 using ProjectVenda.Cliente.Api.Domain.Interop.ViewModel;
 using ProjectVenda.Core.Controllers;
 using ProjectVenda.Core.Notificator;
+using System;
 using System.Threading.Tasks;
 
 namespace ProjectVenda.Cliente.Api.Controllers
@@ -16,18 +18,38 @@ namespace ProjectVenda.Cliente.Api.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
+        private readonly IClienteQueries _clienteQueries;
 
-        public ClientesController(INotificator notificator, IMediator mediator, IMapper mapper) : base(notificator)
+        public ClientesController(
+            INotificator notificator, 
+            IMediator mediator, 
+            IMapper mapper, 
+            IClienteQueries clienteQueries) : base(notificator)
         {
             _mediator = mediator;
             _mapper = mapper;
+            _clienteQueries = clienteQueries;
         }
 
         [HttpGet]
-        [Authorize]
-        public async Task<IActionResult> Get()
+        //[Authorize]
+        public async Task<IActionResult> GetAll()
         {
-            return await Task.FromResult(CustomResponse(true));
+            var result = await _clienteQueries.GetAll();
+
+            if (result is null) AddError("Nenhum resultado encontrado");
+
+            return CustomResponse(result);
+        }
+
+        [HttpGet("id")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var result = await _clienteQueries.GetById(id);
+
+            if (result is null) AddError("Nenhum resultado encontrado");
+
+            return CustomResponse(result);
         }
 
         [HttpPost]

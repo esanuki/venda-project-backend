@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ProjectVenda.Cliente.Api.Persistance.Mapping
+namespace ProjectVenda.Cliente.Api.Persistance.Configuration
 {
     public class ClienteMap : IEntityTypeConfiguration<Domain.Model.Cliente>
     {

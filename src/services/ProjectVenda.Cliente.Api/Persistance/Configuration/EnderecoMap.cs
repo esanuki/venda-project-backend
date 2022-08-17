@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProjectVenda.Cliente.Api.Domain.Model;
 
-namespace ProjectVenda.Cliente.Api.Persistance.Mapping
+namespace ProjectVenda.Cliente.Api.Persistance.Configuration
 {
     public class EnderecoMap : IEntityTypeConfiguration<Endereco>
     {

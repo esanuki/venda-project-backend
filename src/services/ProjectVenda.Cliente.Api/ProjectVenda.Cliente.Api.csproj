@@ -25,8 +25,4 @@
     <ProjectReference Include="..\..\building blocks\ProjectVenda.Core\ProjectVenda.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Application\Queries\" />
-  </ItemGroup>
-
 </Project>
