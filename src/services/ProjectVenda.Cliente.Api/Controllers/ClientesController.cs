@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 namespace ProjectVenda.Cliente.Api.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     public class ClientesController : MainController
     {
         private readonly IMediator _mediator;
@@ -32,7 +33,6 @@ namespace ProjectVenda.Cliente.Api.Controllers
         }
 
         [HttpGet]
-        //[Authorize]
         public async Task<IActionResult> GetAll()
         {
             var result = await _clienteQueries.GetAll();
@@ -42,7 +42,7 @@ namespace ProjectVenda.Cliente.Api.Controllers
             return CustomResponse(result);
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetById(Guid id)
         {
             var result = await _clienteQueries.GetById(id);
@@ -53,14 +53,33 @@ namespace ProjectVenda.Cliente.Api.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Post([FromBody] ClienteCreateViewModel cliente)
         {
-            var command = _mapper.Map<InserirClienteCommand>(cliente);
+            var command = _mapper.Map<InsertClienteCommand>(cliente);
 
-            await _mediator.Send(command);
+            var result = await _mediator.Send(command);
 
-            return CustomResponse(true);
+            return CustomResponse(result);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody] ClienteUpdateViewModel cliente)
+        {
+            var command = _mapper.Map<UpdateClienteCommand>(cliente);
+
+            var result = await _mediator.Send(command);
+
+            return CustomResponse(result);
+        }
+
+        [HttpDelete("{id:guid}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var command = new DeleteClienteCommand(id);
+
+            var result = await _mediator.Send(command);
+
+            return CustomResponse(result);    
         }
     }
 }

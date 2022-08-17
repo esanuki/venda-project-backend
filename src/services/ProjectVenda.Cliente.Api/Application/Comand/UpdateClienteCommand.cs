@@ -1,8 +1,10 @@
-﻿using System;
+﻿using ProjectVenda.Cliente.Api.Domain.Interop.ViewModel;
+using ProjectVenda.Core.DomainObjects;
+using System;
 
-namespace ProjectVenda.Cliente.Api.Domain.Interop.ViewModel
+namespace ProjectVenda.Cliente.Api.Application.Comand
 {
-    public class ClienteUpdateViewModel
+    public class UpdateClienteCommand : Command
     {
         public Guid Id { get; set; }
         public string Nome { get; set; }

@@ -11,6 +11,6 @@ namespace ProjectVenda.Core.Data
         Task<IEnumerable<T>> GetAll();
         Task Save(T entity);
         Task Update(T entity);
-        Task Delete(Guid id);
+        Task Delete(T entity);
     }
 }

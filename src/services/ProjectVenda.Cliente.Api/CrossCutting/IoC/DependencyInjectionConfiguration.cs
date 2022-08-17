@@ -27,7 +27,9 @@ namespace ProjectVenda.Cliente.Api.CrossCutting.IoC
             services.AddScoped<INotificator, Notificator>();
 
             ////Commands
-            services.AddScoped<IRequestHandler<InserirClienteCommand, bool>, ClienteCommandHandler>();
+            services.AddScoped<IRequestHandler<InsertClienteCommand, bool>, ClienteCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateClienteCommand, bool>, ClienteCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteClienteCommand, bool>, ClienteCommandHandler>();
 
             ////Services
             //services.AddScoped<ILoginService, LoginService>();

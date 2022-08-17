@@ -40,13 +40,11 @@ namespace ProjectVenda.Core.Data
 
             await Task.CompletedTask;
         }
-        public virtual async Task Delete(Guid id)
+        public virtual async Task Delete(T entity)
         {
-            var entity = await GetById(id);
-
-            if (entity is null) return;
-
             _dbSet.Remove(entity);
+
+            await Task.CompletedTask;
         }
 
         public void Dispose()

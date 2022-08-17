@@ -5,7 +5,7 @@ using System;
 
 namespace ProjectVenda.Cliente.Api.Application.Comand
 {
-    public class InserirClienteCommand : Command
+    public class InsertClienteCommand : Command
     {
         public string Nome { get; set; }
         public string Cpf { get; set; }

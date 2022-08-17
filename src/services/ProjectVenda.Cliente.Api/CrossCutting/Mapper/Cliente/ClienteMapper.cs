@@ -10,9 +10,10 @@ namespace ProjectVenda.Cliente.Api.CrossCutting.Mapper.Cliente
         public ClienteMapper()
         {
             CreateMap<Domain.Model.Cliente, ClienteDto>();
-            CreateMap<ClienteCreateViewModel, InserirClienteCommand>();
-            CreateMap<InserirClienteCommand, Domain.Model.Cliente>();
-            CreateMap<ClienteUpdateViewModel, Domain.Model.Cliente>();
+            CreateMap<ClienteCreateViewModel, InsertClienteCommand>();
+            CreateMap<ClienteUpdateViewModel, UpdateClienteCommand>();
+            CreateMap<InsertClienteCommand, Domain.Model.Cliente>();
+            CreateMap<UpdateClienteCommand, Domain.Model.Cliente>();
         }
     }
 }

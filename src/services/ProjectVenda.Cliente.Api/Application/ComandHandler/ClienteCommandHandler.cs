@@ -12,7 +12,9 @@ using System.Threading.Tasks;
 namespace ProjectVenda.Cliente.Api.Application.ComandHandler
 {
     public class ClienteCommandHandler : CommandHandler,
-        IRequestHandler<InserirClienteCommand, bool>
+        IRequestHandler<InsertClienteCommand, bool>,
+        IRequestHandler<UpdateClienteCommand, bool>,
+        IRequestHandler<DeleteClienteCommand, bool>
     {
         private readonly IClienteRepository _clienteRepository;
         private readonly IMapper _mapper;
@@ -29,7 +31,7 @@ namespace ProjectVenda.Cliente.Api.Application.ComandHandler
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<bool> Handle(InserirClienteCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(InsertClienteCommand request, CancellationToken cancellationToken)
         {
             
             var cliente = _mapper.Map<Domain.Model.Cliente>(request);
@@ -40,6 +42,36 @@ namespace ProjectVenda.Cliente.Api.Application.ComandHandler
 
             await _unitOfWork.Commit();
 
+
+            return true;
+        }
+
+        public async Task<bool> Handle(UpdateClienteCommand request, CancellationToken cancellationToken)
+        {
+            var cliente = _mapper.Map<Domain.Model.Cliente>(request);
+
+            if (!await IsValid(cliente)) return false;
+
+            await _clienteRepository.Update(cliente);
+
+            await _unitOfWork.Commit();
+
+            return true;
+        }
+
+        public async Task<bool> Handle(DeleteClienteCommand request, CancellationToken cancellationToken)
+        {
+            var cliente = await _clienteRepository.GetById(request.Id);
+
+            if (cliente is null)
+            {
+                AddErrors("Registro não encontrado");
+                return false;
+            }
+
+            await _clienteRepository.Delete(cliente);
+
+            await _unitOfWork.Commit();
 
             return true;
         }
