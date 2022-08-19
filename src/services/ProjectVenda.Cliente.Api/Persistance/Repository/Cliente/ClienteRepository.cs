@@ -30,7 +30,7 @@ namespace ProjectVenda.Cliente.Api.Persistance.Repository.Cliente
                     Id = c.Id,
                     Nome = c.Nome,
                     Email = c.Email,
-                    DataNascimento = c.DataNascimento
+                    Cpf = c.Cpf
                 }).ToListAsync();
 
             return result;
