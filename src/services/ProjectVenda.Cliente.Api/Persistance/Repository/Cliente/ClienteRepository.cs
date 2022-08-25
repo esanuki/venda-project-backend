@@ -24,13 +24,22 @@ namespace ProjectVenda.Cliente.Api.Persistance.Repository.Cliente
 
         public override async Task<IEnumerable<Domain.Model.Cliente>> GetAll()
         {
-            var result = await _dbSet.AsNoTrackingWithIdentityResolution()
+            var result = await _dbSet
+                .Include(c => c.Endereco).AsNoTrackingWithIdentityResolution()
                 .Select(c => new Domain.Model.Cliente
                 {
                     Id = c.Id,
                     Nome = c.Nome,
                     Email = c.Email,
-                    Cpf = c.Cpf
+                    Cpf = c.Cpf,
+                    DataNascimento = c.DataNascimento,
+                    Endereco = new Domain.Model.Endereco
+                    {
+                        Logradouro = c.Endereco.Logradouro,
+                        Cep = c.Endereco.Cep,
+                        Estado = c.Endereco.Estado,
+                        Cidade = c.Endereco.Cidade
+                    }
                 }).ToListAsync();
 
             return result;
