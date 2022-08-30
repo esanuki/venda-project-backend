@@ -1,5 +1,4 @@
-﻿using ProjectVenda.Login.Api.Interop.Dto;
-using ProjectVenda.Login.Api.Interop.ViewModels;
+﻿using ProjectVenda.Core.Interop.Login;
 using System.Threading.Tasks;
 
 namespace ProjectVenda.Login.Api.Application.Queries.Interfaces

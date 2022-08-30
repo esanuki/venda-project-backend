@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ProjectVenda.Login.Api.Interop.ViewModels
+namespace ProjectVenda.Core.Interop.Login
 {
     public class LoginViewModel
     {

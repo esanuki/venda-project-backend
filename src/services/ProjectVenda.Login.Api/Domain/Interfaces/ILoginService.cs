@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using ProjectVenda.Core.Interop.Login;
 using ProjectVenda.Login.Api.Domain.Models;
-using ProjectVenda.Login.Api.Interop.Dto;
-using ProjectVenda.Login.Api.Interop.ViewModels;
 using System;
 using System.Threading.Tasks;
 

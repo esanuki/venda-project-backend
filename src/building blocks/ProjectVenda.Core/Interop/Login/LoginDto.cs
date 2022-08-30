@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ProjectVenda.Login.Api.Interop.Dto
+namespace ProjectVenda.Core.Interop.Login
 {
     public class LoginDto
     {

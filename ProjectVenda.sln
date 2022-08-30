@@ -24,6 +24,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{A63FE746-9617-4504-97AB-7B5F4B3A1776}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectVenda.BFF.Api", "src\gateway\ProjectVenda.BFF.Api\ProjectVenda.BFF.Api.csproj", "{62F45A7D-0940-4325-B846-6525779662AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +46,10 @@ Global
 		{2A0D7BA4-A150-4AAE-8117-F8846CB33C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A0D7BA4-A150-4AAE-8117-F8846CB33C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A0D7BA4-A150-4AAE-8117-F8846CB33C91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62F45A7D-0940-4325-B846-6525779662AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62F45A7D-0940-4325-B846-6525779662AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62F45A7D-0940-4325-B846-6525779662AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62F45A7D-0940-4325-B846-6525779662AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +62,8 @@ Global
 		{B13971E5-C49E-47D9-AA24-277A06453A9B} = {342DB3A6-6CF3-4357-9EC7-DF407EB2D215}
 		{FBF962DF-8CF2-438A-9935-BCCE42318990} = {6EB98CA8-1711-4721-B5A2-59E3CAF5E5A5}
 		{2A0D7BA4-A150-4AAE-8117-F8846CB33C91} = {FBF962DF-8CF2-438A-9935-BCCE42318990}
+		{A63FE746-9617-4504-97AB-7B5F4B3A1776} = {FEFAD242-9735-4E16-9E93-2D7F8FED4538}
+		{62F45A7D-0940-4325-B846-6525779662AD} = {A63FE746-9617-4504-97AB-7B5F4B3A1776}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54E99DEF-F5A8-487D-B3DA-9D496559B623}

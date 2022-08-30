@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjectVenda.Core.Controllers;
+using ProjectVenda.Core.Interop.Login;
 using ProjectVenda.Core.Mediator;
 using ProjectVenda.Core.Notificator;
 using ProjectVenda.Login.Api.Application.Comand;
 using ProjectVenda.Login.Api.Application.Queries.Interfaces;
-using ProjectVenda.Login.Api.Interop.ViewModels;
-using System;
 using System.Threading.Tasks;
 
 namespace ProjectVenda.Login.Api.Controllers

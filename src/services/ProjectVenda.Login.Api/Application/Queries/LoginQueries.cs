@@ -1,11 +1,7 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using ProjectVenda.Core.Interop.Login;
 using ProjectVenda.Core.Notificator;
 using ProjectVenda.Login.Api.Application.Queries.Interfaces;
 using ProjectVenda.Login.Api.Domain.Interfaces;
-using ProjectVenda.Login.Api.Interop.Dto;
-using ProjectVenda.Login.Api.Interop.ViewModels;
 using System;
 using System.Threading.Tasks;
 

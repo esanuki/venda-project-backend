@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProjectVenda.Login.Api.Interop.Dto
+namespace ProjectVenda.Core.Interop.Login
 {
     public class LoginResponseDto
     {
